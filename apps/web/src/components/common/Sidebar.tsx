@@ -17,7 +17,7 @@ function Sidebar({ onClose }: SidebarProps) {
                                 <p>Create. Design. Manage</p>
                             </div>
                         </div>
-                        <a href="/"><p>Dashboard</p></a>
+                        <a onClick={onClose}><p>Dashboard</p></a>
                         <a><p >Members</p></a>
                         <a><p >Verify ID</p></a>
                         <a><p>Organisation</p></a>

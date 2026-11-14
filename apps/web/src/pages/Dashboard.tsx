@@ -12,8 +12,8 @@ function Dashboard() {
         <div id="dashboard">
             {isSidebarOpen && (<Sidebar onClose={() => setIsSidebarOpen(!isSidebarOpen)} />
             )}
-            {
-                isprofileOpen && (
+            
+            {isprofileOpen && (
                     <div id="profile-container" onClick={() => setIsProfileOpen(!isprofileOpen)} >
                         <div>
                             <a href="/">
