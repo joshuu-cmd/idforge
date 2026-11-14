@@ -20,6 +20,7 @@ body {
     border-radius: 50%;
 }
 #profile {
+    cursor: pointer;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -201,4 +202,5 @@ ul a:hover {
     gap: 3px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }

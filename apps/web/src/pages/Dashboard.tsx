@@ -4,7 +4,6 @@ import Sidebar from '../components/common/Sidebar';
 import { useState } from 'react';
 
 
-
 function Dashboard() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isprofileOpen, setIsProfileOpen] = useState(false);
@@ -16,10 +15,10 @@ function Dashboard() {
             {isprofileOpen && (
                     <div id="profile-container" onClick={() => setIsProfileOpen(!isprofileOpen)} >
                         <div>
-                            <a href="/">
+                            <a onClick={() => setIsProfileOpen(!isprofileOpen)} >
                                 <p>⬅Back</p>
                             </a>
-                            <a href="">
+                            <a href=''>
                                 <p>My Profile</p>
                             </a>
                             <a href="">
