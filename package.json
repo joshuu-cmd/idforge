@@ -1,0 +1,21 @@
+{
+  "name": "idforge",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @idforge/web",
+    "dev:web": "npm run dev --workspace @idforge/web",
+    "dev:server": "npm run dev --workspace @idforge/server",
+    "dev:worker": "npm run dev --workspace @idforge/worker",
+    "build": "npm run build --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}
