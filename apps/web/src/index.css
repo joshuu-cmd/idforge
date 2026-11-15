@@ -188,6 +188,7 @@ ul a:hover {
     text-decoration: none;
     width:200px;
     height: 40vh;
+    max-height: 250px;
     align-items: center;
     justify-content: center;
     
