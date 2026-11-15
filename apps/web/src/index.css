@@ -108,6 +108,7 @@ nav ul img {
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    padding-top: 35px;
 
 }
 #sidebar-header div {
