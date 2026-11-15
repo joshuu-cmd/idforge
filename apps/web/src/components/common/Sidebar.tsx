@@ -22,6 +22,10 @@ function Sidebar({ onClose }: SidebarProps) {
                         <a><p >Verify ID</p></a>
                         <a><p>Organisation</p></a>
                         <a><p >History</p></a>
+                        <a><p >Billing</p></a>
+                        <a><p >Help & Support</p></a>
+                        <a><p >FAQs</p></a>
+                        <a><p >Contact Us</p></a>
                     </ul>
                 </nav>
             </div>
