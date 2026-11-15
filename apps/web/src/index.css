@@ -47,11 +47,13 @@ body {
     justify-content: center;
     width: 70%;
     gap: 10px;
-    height: 200px;
+    height: 30vh;
+    max-height: 300px;
     border: 1px solid #f2a7a7;
     max-width: 700px;
     background-color: #f5f5f5f5;
     border-radius: 10px;
+
 }
 #content div {
    height: 80px;
