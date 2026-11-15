@@ -3,8 +3,12 @@ import profile from './profile1.jpeg'
 import Sidebar from '../components/common/Sidebar';
 import { useState } from 'react';
 
+type DashboardProps = {
+    onLogout: () => void;
+}
 
-function Dashboard() {
+
+function Dashboard({ onLogout }: DashboardProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isprofileOpen, setIsProfileOpen] = useState(false);
     return (
@@ -27,7 +31,11 @@ function Dashboard() {
                             <a href="">
                                 <p>Notifications</p>
                             </a>
-                            <a href="">
+                        <a onClick={() => {
+                            if (window.confirm("Logout?")) {
+                                onLogout();
+                            }
+                            }}>
                                 <img id="logout" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWPCaSml-iF5vidLnLzMP039G83MnrcQASaf6u8YPuIQ&s=10"/>
                                 <p>Logout</p>
                             </a>  
