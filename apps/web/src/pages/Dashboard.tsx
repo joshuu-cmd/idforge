@@ -2,6 +2,7 @@ import logo from './logo.jpeg'
 import profile from './profile1.jpeg'
 import Sidebar from '../components/common/Sidebar';
 import { useState } from 'react';
+import Template from '../features/designer/DesignerCanvas'
 
 type DashboardProps = {
     name: string;
@@ -12,10 +13,14 @@ type DashboardProps = {
 function Dashboard({name, onLogout }: DashboardProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isprofileOpen, setIsProfileOpen] = useState(false);
+    const [isTemplateOpen, setIsTemplateOpen] = useState(false);
     return (
         <div id="dashboard">
             {isSidebarOpen && (<Sidebar onClose={() => setIsSidebarOpen(!isSidebarOpen)} />
             )}
+            {
+                isTemplateOpen && (<Template onClose={ ()=> setIsTemplateOpen(!isTemplateOpen)} />)
+            }
             
             {isprofileOpen && (
                     <div id="profile-container" onClick={() => setIsProfileOpen(!isprofileOpen)} >
@@ -50,7 +55,7 @@ function Dashboard({name, onLogout }: DashboardProps) {
                 <h1 >Dashboard</h1>
                 <img  id="profile" onClick={() => setIsProfileOpen(!isprofileOpen)} src={profile} alt="Profile" />
             </div>
-            <p>Hello!  <span>{name}</span></p>
+            <p><h1>Hello! <span>{name}</span></h1></p>
             <p>Welcome to IDForge, your number one Designer</p>
             <div id="content">
                 <div>
@@ -61,9 +66,9 @@ function Dashboard({name, onLogout }: DashboardProps) {
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw5cSZL54UDBy6NSRTHi7KL0xo23kSsE9thcv00ej6jw&s=10" />
                     <p>Add Members</p>
                 </div>
-                <div> 
+                <div onClick={()=>setIsTemplateOpen()} > 
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7wt--Nc5jCFK-BG_d_91T7f0wEs0TTvSy6gjYSSsfAA&s=10"/>
-                    <p>View Members</p>
+                    <p>Create Template</p>
                 </div>
                 <div>
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSJlNKKrzFnqnf823onbJwsAtgb5XM5XgCEt3wLwAwMg&s=10" />
