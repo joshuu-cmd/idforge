@@ -11,12 +11,12 @@ function Login({ onLogin }: LoginProps) {
             <form onSubmit={(event) => {
                 event.preventDefault();
                 const name = new FormData(event.currentTarget).get("name");
-                if (typeof name !== "string" || !name.trim() ) {
+                if (typeof name !== "string" || !name.trim().toUpperCase() ) {
                     alert("Please enter your Name"); 
                     return;
                 } 
                 else {
-                    onLogin(name);
+                    onLogin(name.trim().toUpperCase());
                 }
                
 

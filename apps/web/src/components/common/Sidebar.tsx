@@ -26,6 +26,8 @@ function Sidebar({ onClose }: SidebarProps) {
                         <a><p >Help & Support</p></a>
                         <a><p >FAQs</p></a>
                         <a><p >Contact Us</p></a>
+                        <a><p>Terms & Conditions</p></a>
+                        <a><p>Policies</p></a>
                     </ul>
                 </nav>
             </div>

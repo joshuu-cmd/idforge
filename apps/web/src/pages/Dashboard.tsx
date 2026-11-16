@@ -50,7 +50,7 @@ function Dashboard({name, onLogout }: DashboardProps) {
                 <h1 >Dashboard</h1>
                 <img  id="profile" onClick={() => setIsProfileOpen(!isprofileOpen)} src={profile} alt="Profile" />
             </div>
-            <p>Welcome <span>{name}</span></p>
+            <p>Hello!  <span>{name}</span></p>
             <p>Welcome to IDForge, your number one Designer</p>
             <div id="content">
                 <div>

@@ -5,12 +5,12 @@ import Login from './features/authentication/Login'
 import { useState } from 'react'
 
 function App() { 
-    
+    const [name, setName] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     return isLoggedIn
-        ? <Dashboard onLogout={() => setIsLoggedIn(false)} />
+        ? <Dashboard name={name} onLogout={() => setIsLoggedIn(false)} />
 
-        : <Login onLogin={() => setIsLoggedIn(true)} />;
+        : <Login onLogin={(enteredName) => { setName(enteredName); setIsLoggedIn(true); }} />;
 }
 
 const root1 = document.getElementById('root')
