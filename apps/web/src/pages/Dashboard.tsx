@@ -4,11 +4,12 @@ import Sidebar from '../components/common/Sidebar';
 import { useState } from 'react';
 
 type DashboardProps = {
+    name: string;
     onLogout: () => void;
 }
 
 
-function Dashboard({ onLogout }: DashboardProps) {
+function Dashboard({name, onLogout }: DashboardProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isprofileOpen, setIsProfileOpen] = useState(false);
     return (
@@ -49,6 +50,7 @@ function Dashboard({ onLogout }: DashboardProps) {
                 <h1 >Dashboard</h1>
                 <img  id="profile" onClick={() => setIsProfileOpen(!isprofileOpen)} src={profile} alt="Profile" />
             </div>
+            <p>Welcome <span>{name}</span></p>
             <p>Welcome to IDForge, your number one Designer</p>
             <div id="content">
                 <div>
