@@ -66,7 +66,7 @@ function Dashboard({name, onLogout }: DashboardProps) {
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw5cSZL54UDBy6NSRTHi7KL0xo23kSsE9thcv00ej6jw&s=10" />
                     <p>Add Members</p>
                 </div>
-                <div onClick={()=>setIsTemplateOpen()} > 
+                <div onClick={()=>setIsTemplateOpen(!isTemplateOpen)} > 
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7wt--Nc5jCFK-BG_d_91T7f0wEs0TTvSy6gjYSSsfAA&s=10"/>
                     <p>Create Template</p>
                 </div>
