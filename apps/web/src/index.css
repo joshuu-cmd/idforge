@@ -247,6 +247,8 @@ ul a:hover {
   background-color: #cbcdcf;
   padding-left:69px;
   padding-top:47px;
+  display: flex;
+  flex-direction: column;
   
 }
 #designer{
@@ -260,5 +262,12 @@ ul a:hover {
   border: none;
   cursor: pointer;
   background-color: #6c778f;
+}
+#front{
+  border: dotted 1px orange;
+  height: 300px;
+  max-width:600px ;
+  align-self: auto;
+
 }
 
