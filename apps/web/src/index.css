@@ -266,7 +266,7 @@ ul a:hover {
 #front{
   border: dotted 1px orange;
   height: 300px;
-  max-width:600px ;
+  max-width:400px ;
   align-self: auto;
 
 }
