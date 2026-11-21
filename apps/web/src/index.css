@@ -244,10 +244,11 @@ ul a:hover {
   min-width: 100vw;
   min-height: 100vh;
   position: absolute;
-  background-color: #cbcdcf;
+  background-color: #cedbe8;
   padding-left:69px;
   padding-top:47px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   
 }
@@ -257,6 +258,7 @@ ul a:hover {
     background-color: #4c6190;
     border-radius: 8px;
     border: none;
+    align-self: flex-start;
 }
 #designer:hover{
   border: none;
@@ -266,8 +268,38 @@ ul a:hover {
 #front{
   border: dotted 1px orange;
   height: 300px;
-  max-width:400px ;
+  max-width:400px;
+  width: 80vw;
   align-self: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 }
+#front button{
+  background-color: #3a3a8c;
+  border-radius: 5px;
+  border: 0;
+  height: 30px;
+  width: 130px;
+  color: #cedbe8;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 1.5px;
+  font-size: 18px;
+  margin-top: 7px;
+}
+#front form{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+#front label{
+  margin-bottom: 7px;
+  
+}
+
+
+
+
 
