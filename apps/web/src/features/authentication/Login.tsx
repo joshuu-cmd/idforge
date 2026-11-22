@@ -1,5 +1,6 @@
 
 
+
 type LoginProps = {
     onLogin: (name: string) => void;
 }
@@ -21,11 +22,12 @@ function Login({ onLogin }: LoginProps) {
                
 
             }}>
-                <label >Email or Username:</label>
-                <input required name="name"  placeholder="Email" />
+                <label >Username:</label>
+                <input required name="name"  placeholder="username" />
                 <label htmlFor="password">Password:</label>
                 <input required type="password" placeholder="Password" />
                 <button type="submit">Login</button>
+                <p>Don't have an account yet? <a href="/register">Register.</a></p>
             </form>
         </div>
     )
