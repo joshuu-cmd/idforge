@@ -3,14 +3,50 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import Login from './features/authentication/Login'
 import Register from './features/authentication/Register'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import type { Session } from '@supabase/supabase-js'
+import { supabase } from './lib/supabase'
 
 function App() { 
-    const [name, setName] = useState(() => localStorage.getItem("idforge-user") ?? "");
-    if (name) {
+    const [session, setSession] = useState<Session | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [authError, setAuthError] = useState("");
+
+    useEffect(() => {
+        let isMounted = true;
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+            if (isMounted) {
+                setSession(nextSession);
+                setIsLoading(false);
+            }
+        });
+
+        void supabase.auth.getSession().then(({ data, error }) => {
+            if (!isMounted) return;
+            if (error) setAuthError(error.message);
+            setSession(data.session);
+            setIsLoading(false);
+        });
+
+        return () => {
+            isMounted = false;
+            subscription.unsubscribe();
+        };
+    }, []);
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+
+    if (authError) {
+        return <p role="alert">Could not load your session: {authError}</p>;
+    }
+
+    if (session) {
+        const username = session.user.user_metadata.username;
+        const name = typeof username === "string" ? username : session.user.email ?? "User";
         return <Dashboard name={name} onLogout={() => {
-            localStorage.removeItem("idforge-user");
-            setName("");
+            void supabase.auth.signOut();
         }} />
     }
 
@@ -18,10 +54,7 @@ function App() {
         return <Register />;
     }
 
-    return <Login onLogin={(enteredName) => {
-        localStorage.setItem("idforge-user", enteredName);
-        setName(enteredName);
-    }} />;
+    return <Login />;
 }
 
 const root1 = document.getElementById('root')
