@@ -14,13 +14,15 @@ function Dashboard({name, onLogout }: DashboardProps) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isprofileOpen, setIsProfileOpen] = useState(false);
     const [isTemplateOpen, setIsTemplateOpen] = useState(false);
+
+    if (isTemplateOpen) {
+        return <Template onClose={() => setIsTemplateOpen(false)} />;
+    }
+
     return (
         <div id="dashboard">
             {isSidebarOpen && (<Sidebar onClose={() => setIsSidebarOpen(!isSidebarOpen)} />
             )}
-            {
-                isTemplateOpen && (<Template onClose={ ()=> setIsTemplateOpen(!isTemplateOpen)} />)
-            }
             
             {isprofileOpen && (
                     <div id="profile-container" onClick={() => setIsProfileOpen(!isprofileOpen)} >
