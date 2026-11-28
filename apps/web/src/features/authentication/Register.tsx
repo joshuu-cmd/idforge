@@ -3,13 +3,11 @@ import { supabase } from "../../lib/supabase";
 
 function Register() {
     const [errorMessage, setErrorMessage] = useState("");
-    const [statusMessage, setStatusMessage] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setErrorMessage("");
-        setStatusMessage("");
 
         const formData = new FormData(event.currentTarget);
         const username = String(formData.get("username") ?? "").trim().toLowerCase();
@@ -33,27 +31,28 @@ function Register() {
         }
 
         setIsSubmitting(true);
-        const { data, error } = await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-                data: { username },
-                emailRedirectTo: `${window.location.origin}/`,
-            },
+        const { data, error } = await supabase.functions.invoke<{
+            session: { access_token: string; refresh_token: string };
+            message?: string;
+        }>("register-with-username", {
+            body: { username, email, password },
         });
+
+        if (error || !data?.session) {
+            setIsSubmitting(false);
+            setErrorMessage(data?.message ?? error?.message ?? "Could not create your account.");
+            return;
+        }
+
+        const { error: sessionError } = await supabase.auth.setSession(data.session);
         setIsSubmitting(false);
 
-        if (error) {
-            setErrorMessage(error.message);
+        if (sessionError) {
+            setErrorMessage("Your account was created, but we couldn't sign you in. Please log in.");
             return;
         }
 
-        if (data.session) {
-            window.location.href = "/";
-            return;
-        }
-
-        setStatusMessage("Check your email to confirm your account, then log in with your username and password.");
+        window.location.href = "/";
     }
 
     return (
@@ -69,7 +68,6 @@ function Register() {
                 <label htmlFor="confirmPassword">Confirm password:</label>
                 <input id="confirmPassword" required name="confirmPassword" type="password" autoComplete="new-password" />
                 {errorMessage && <p role="alert">{errorMessage}</p>}
-                {statusMessage && <p role="status">{statusMessage}</p>}
                 <button type="submit" disabled={isSubmitting}>
                     {isSubmitting ? "Registering..." : "Register"}
                 </button>
